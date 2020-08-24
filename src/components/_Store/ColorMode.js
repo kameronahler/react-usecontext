@@ -9,8 +9,9 @@ export function ColorModeProvider({ children }) {
   })
 
   const toggleDarkColorModeStatus = () => {
-    // setDarkColorModeStatus((prevDarkColorModeStatus) => !prevDarkColorModeStatus)
-    console.log('toggle')
+    setDarkColorModeStatus(
+      (prevDarkColorModeStatus) => !prevDarkColorModeStatus
+    )
   }
 
   // const [buttonAriaLabel, setButtonAriaLabel] = useState(() => {

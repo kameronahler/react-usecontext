@@ -4,8 +4,6 @@ import 'normalize.css'
 import './App.scss'
 import Display from '../Display/Display'
 
-console.log(ColorModeProvider)
-
 export default function App() {
   return (
     <>
