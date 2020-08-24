@@ -1,26 +1,37 @@
 import React, { useState } from 'react'
 
+// create contexts
 export const ColorModeContext = React.createContext()
 export const ToggleColorModeContext = React.createContext()
 
+// provide
 export function ColorModeProvider({ children }) {
-  const [darkColorModeStatus, setDarkColorModeStatus] = useState(() => {
-    return true
-  })
+  // settings
+  const contextStyles = {
+    dark: {
+      backgroundColor: '#333',
+      color: '#fff',
+    },
+    light: {
+      backgroundColor: '#eee',
+      color: '#333',
+    },
+  }
 
+  // state
+  const [darkColorModeStatus, setDarkColorModeStatus] = useState(true)
+
+  // set state
   const toggleDarkColorModeStatus = () => {
     setDarkColorModeStatus(
       (prevDarkColorModeStatus) => !prevDarkColorModeStatus
     )
   }
 
-  // const [buttonAriaLabel, setButtonAriaLabel] = useState(() => {
-  //   return 'Change theme to light'
-  // })
-  console.log(darkColorModeStatus)
+  // render
   return (
     <>
-      <ColorModeContext.Provider value={darkColorModeStatus}>
+      <ColorModeContext.Provider value={[darkColorModeStatus, contextStyles]}>
         <ToggleColorModeContext.Provider value={toggleDarkColorModeStatus}>
           {children}
         </ToggleColorModeContext.Provider>

@@ -1,14 +1,13 @@
 import React, { useContext } from 'react'
 import { ColorModeContext, ToggleColorModeContext } from '../_Store/ColorMode'
 
-export default function Component() {
-  const darkColorModeStatus = useContext(ColorModeContext)
-  const toggleDarkColorModeStatus = useContext(ToggleColorModeContext)
+export default function Display() {
+  const [contextStatus, contextStyles] = useContext(ColorModeContext)
+  const toggleContext = useContext(ToggleColorModeContext)
+  const currentStyles = contextStatus ? contextStyles.dark : contextStyles.light
 
-  // const exampleStyles = {
-  //   backgroundColor: darkColorMode ? '#333' : '#eee',
-  //   color: darkColorMode ? '#fff' : '#000',
-  // }
+  console.log(contextStatus)
+  console.log(currentStyles)
 
   return (
     <>
@@ -20,7 +19,7 @@ export default function Component() {
           <button
             // aria-label={buttonAriaLabel}
             className='toggle'
-            onClick={toggleDarkColorModeStatus}
+            onClick={toggleContext}
           >
             <div className='toggle__switch-wrapper'>
               <div className='toggle__switch'></div>
@@ -28,8 +27,7 @@ export default function Component() {
           </button>
         </div>
         <div className='grid__right'>
-          {/* <div style={exampleStyles} className='example'> */}
-          <div className='example'>
+          <div style={currentStyles} className='example'>
             <h2 className='example__heading'>Example</h2>
             <p className='example__body'>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
