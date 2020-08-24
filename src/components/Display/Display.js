@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { ColorModeContext, ToggleColorModeContext } from '../_Store/ColorMode'
+import { ColorModeContext } from '../_Store/ColorMode'
+import Toggle from '../Toggle/Toggle'
 
 export default function Display() {
   // consume and destructure from provider
@@ -7,35 +8,16 @@ export default function Display() {
     ColorModeContext
   )
 
-  // reach back up to context to change global context's state
-  const ToggleColorModeContextStateConsumer = useContext(ToggleColorModeContext)
-
   // conditionally use styles from the data in the context provider
   const printStyles = colorModeConsumer
     ? colorModeDataConsumer.dark.style
     : colorModeDataConsumer.light.style
 
-  // conditionally use an aria label from the data in the context provider
-  const printAriaLabel = colorModeConsumer
-    ? colorModeDataConsumer.dark.ariaLabel
-    : colorModeDataConsumer.light.ariaLabel
-
   return (
     <>
       <section className='grid'>
         <div className='grid__left'>
-          <header>
-            <h1>Toggle theme</h1>
-          </header>
-          <button
-            aria-label={printAriaLabel}
-            className='toggle'
-            onClick={ToggleColorModeContextStateConsumer}
-          >
-            <div className='toggle__switch-wrapper'>
-              <div className='toggle__switch'></div>
-            </div>
-          </button>
+          <Toggle />
         </div>
         <div className='grid__right'>
           <div style={printStyles} className='example'>
