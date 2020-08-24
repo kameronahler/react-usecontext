@@ -18,18 +18,25 @@ export default function Toggle() {
 
   return (
     <div className='toggle'>
-      <header className='toggle__header'>
-        <h1 className='toggle__heading'>Toggle theme</h1>
-      </header>
-      <button
-        aria-label={printAriaLabel}
-        className='toggle__button'
-        onClick={ToggleColorModeContextStateConsumer}
-      >
-        <div className='toggle__switch-wrapper'>
-          <div className='toggle__switch'></div>
-        </div>
-      </button>
+      <div className='toggle__inner'>
+        <header className='toggle__header'>
+          <h1 className='toggle__heading'>Toggle Color Mode</h1>
+        </header>
+        <button
+          aria-label={printAriaLabel}
+          className='toggle__button'
+          onClick={ToggleColorModeContextStateConsumer}
+        >
+          <div className='toggle__switch-wrapper'>
+            <div
+              style={
+                !colorModeConsumer ? { transform: 'translateX(150%)' } : {}
+              }
+              className='toggle__switch'
+            ></div>
+          </div>
+        </button>
+      </div>
     </div>
   )
 }

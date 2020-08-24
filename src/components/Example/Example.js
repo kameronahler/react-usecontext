@@ -15,12 +15,15 @@ export default function Example() {
 
   return (
     <div style={printStyles} className='example'>
-      <h2 className='example__heading'>Example</h2>
-      <p className='example__body'>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi odio
-        aliquid sequi fugiat beatae expedita, dolorem sint libero quam amet
-        voluptatum voluptatem corrupti in illo. Debitis fugiat hic unde iste.
-      </p>
+      <div className='example__inner'>
+        <h1 className='example__heading'>Example</h1>
+        <p className='example__body'>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+          odio aliquid sequi fugiat beatae expedita, dolorem sint libero quam
+          amet voluptatum voluptatem corrupti in illo. Debitis fugiat hic unde
+          iste.
+        </p>
+      </div>
     </div>
   )
 }

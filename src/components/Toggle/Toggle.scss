@@ -1,4 +1,20 @@
 .toggle {
+  @media (min-width: 48em) {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__inner {
+    padding: 2rem;
+
+    @media (min-width: 48em) {
+      margin: auto;
+      max-width: 400px;
+      min-height: 300px;
+    }
+  }
+
   &__heading {
     margin-top: unset;
   }
@@ -8,16 +24,29 @@
     border: unset;
     display: block;
     padding: unset;
+
+    &:active,
+    &:focus {
+      outline: unset;
+    }
+  }
+
+  &__switch-wrapper,
+  &__switch {
+    border-radius: 999em;
+    height: 1rem;
   }
 
   &__switch-wrapper {
     background-color: #bbb;
-    width: 4rem;
+    display: flex;
+    width: 2.5rem;
   }
 
   &__switch {
     background-color: #ddd;
-    height: 1rem;
     width: 1rem;
+    transform: translateX(0);
+    transition: 0.25s ease-out;
   }
 }
