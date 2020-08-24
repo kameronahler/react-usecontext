@@ -1,0 +1,23 @@
+.toggle {
+  &__heading {
+    margin-top: unset;
+  }
+
+  &__button {
+    background-color: unset;
+    border: unset;
+    display: block;
+    padding: unset;
+  }
+
+  &__switch-wrapper {
+    background-color: #bbb;
+    width: 4rem;
+  }
+
+  &__switch {
+    background-color: #ddd;
+    height: 1rem;
+    width: 1rem;
+  }
+}

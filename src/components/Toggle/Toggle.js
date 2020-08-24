@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { ColorModeContext, ToggleColorModeContext } from '../_Store/ColorMode'
+import './Toggle.scss'
 
 export default function Toggle() {
   // consume and destructure from provider
@@ -18,7 +19,7 @@ export default function Toggle() {
   return (
     <div className='toggle'>
       <header className='toggle__header'>
-        <h1 className='controls__heading'>Toggle theme</h1>
+        <h1 className='toggle__heading'>Toggle theme</h1>
       </header>
       <button
         aria-label={printAriaLabel}

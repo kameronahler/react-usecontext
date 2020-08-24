@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { ColorModeContext } from '../_Store/ColorMode'
+import './Example.scss'
 
 export default function Example() {
   // consume and destructure from provider

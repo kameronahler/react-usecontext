@@ -1,0 +1,9 @@
+.example {
+  padding: 2rem;
+  margin: auto;
+  width: 400px;
+
+  &__heading {
+    margin-top: unset;
+  }
+}
