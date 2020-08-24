@@ -1,3 +1,53 @@
-.button {
-  //
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+h1,
+h2 {
+  margin-top: unset;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 2rem;
+
+  &__left {
+    padding: 2rem;
+  }
+  &__right {
+    display: flex;
+    padding: 2rem;
+  }
+}
+
+.toggle {
+  background-color: unset;
+  border: unset;
+  display: block;
+  padding: unset;
+
+  &__switch-wrapper {
+    background-color: #bbb;
+    width: 4rem;
+  }
+
+  &__switch {
+    background-color: #ddd;
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
+.example {
+  background: #eee;
+  padding: 2rem;
+  margin: auto;
+  width: 400px;
 }
