@@ -4,10 +4,10 @@ import React, { useState } from 'react'
 export const ColorModeContext = React.createContext()
 export const ToggleColorModeContext = React.createContext()
 
-// provide
-export function ColorModeProvider({ children }) {
+// provider
+export function ColorModeContextProvider({ children }) {
   // settings
-  const contextStyles = {
+  const colorModeContextData = {
     dark: {
       backgroundColor: '#333',
       color: '#fff',
@@ -19,20 +19,22 @@ export function ColorModeProvider({ children }) {
   }
 
   // state
-  const [darkColorModeStatus, setDarkColorModeStatus] = useState(true)
+  const [colorModeContextState, setColorModeContextState] = useState(true)
 
   // set state
-  const toggleDarkColorModeStatus = () => {
-    setDarkColorModeStatus(
-      (prevDarkColorModeStatus) => !prevDarkColorModeStatus
+  const toggleColorModeContextState = () => {
+    setColorModeContextState(
+      (prevColorModeContextState) => !prevColorModeContextState
     )
   }
 
   // render
   return (
     <>
-      <ColorModeContext.Provider value={[darkColorModeStatus, contextStyles]}>
-        <ToggleColorModeContext.Provider value={toggleDarkColorModeStatus}>
+      <ColorModeContext.Provider
+        value={[colorModeContextState, colorModeContextData]}
+      >
+        <ToggleColorModeContext.Provider value={toggleColorModeContextState}>
           {children}
         </ToggleColorModeContext.Provider>
       </ColorModeContext.Provider>

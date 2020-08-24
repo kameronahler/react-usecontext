@@ -2,12 +2,18 @@ import React, { useContext } from 'react'
 import { ColorModeContext, ToggleColorModeContext } from '../_Store/ColorMode'
 
 export default function Display() {
-  const [contextStatus, contextStyles] = useContext(ColorModeContext)
-  const toggleContext = useContext(ToggleColorModeContext)
-  const currentStyles = contextStatus ? contextStyles.dark : contextStyles.light
+  // consume from provider
+  const [colorModeConsumer, colorModeDataConsumer] = useContext(
+    ColorModeContext
+  )
 
-  console.log(contextStatus)
-  console.log(currentStyles)
+  // reach back up to context to change global context's state
+  const ToggleColorModeContextStateConsumer = useContext(ToggleColorModeContext)
+
+  // conditionally use certain styles from consumer data
+  const currentStyles = colorModeConsumer
+    ? colorModeDataConsumer.dark
+    : colorModeDataConsumer.light
 
   return (
     <>
@@ -19,7 +25,7 @@ export default function Display() {
           <button
             // aria-label={buttonAriaLabel}
             className='toggle'
-            onClick={toggleContext}
+            onClick={ToggleColorModeContextStateConsumer}
           >
             <div className='toggle__switch-wrapper'>
               <div className='toggle__switch'></div>
