@@ -1,42 +1,17 @@
-import React, { useState } from 'react'
-import Component from '../Component/Component'
+import React from 'react'
+import { ColorModeProvider } from '../_Store/ColorMode'
 import 'normalize.css'
 import './App.scss'
+import Display from '../Display/Display'
 
-export const ThemeContext = React.createContext()
+console.log(ColorModeProvider)
 
 export default function App() {
-  const [darkTheme, setDarkTheme] = useState(() => {
-    return true
-  })
-
-  const [buttonAriaLabel, setButtonAriaLabel] = useState(() => {
-    return 'Change theme to light'
-  })
-
-  const toggleTheme = () => {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme)
-  }
-
   return (
-    <ThemeContext.Provider value={darkTheme}>
-      <section className='grid'>
-        <div className='grid__left'>
-          <header>
-            <h1>Toggle theme</h1>
-          </header>
-          <button
-            aria-label={buttonAriaLabel}
-            className='toggle'
-            onClick={toggleTheme}
-          >
-            <div className='toggle__switch-wrapper'>
-              <div className='toggle__switch'></div>
-            </div>
-          </button>
-        </div>
-        <Component />
-      </section>
-    </ThemeContext.Provider>
+    <>
+      <ColorModeProvider>
+        <Display />
+      </ColorModeProvider>
+    </>
   )
 }
