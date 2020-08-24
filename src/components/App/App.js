@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Component from '../Component/Component'
 import 'normalize.css'
 import './App.scss'
 
@@ -13,33 +14,29 @@ export default function App() {
     return 'Change theme to light'
   })
 
+  const toggleTheme = () => {
+    setDarkTheme((prevDarkTheme) => !prevDarkTheme)
+  }
+
   return (
-    <>
-      <ThemeContext.Provider value={darkTheme}>
-        <section className='grid'>
-          <div className='grid__left'>
-            <header>
-              <h1>Toggle theme</h1>
-            </header>
-            <button aria-label={buttonAriaLabel} className='toggle'>
-              <div className='toggle__switch-wrapper'>
-                <div className='toggle__switch'></div>
-              </div>
-            </button>
-          </div>
-          <div className='grid__right'>
-            <div className='example'>
-              <h2 className='example__heading'>Example</h2>
-              <p className='example__body'>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Excepturi odio aliquid sequi fugiat beatae expedita, dolorem
-                sint libero quam amet voluptatum voluptatem corrupti in illo.
-                Debitis fugiat hic unde iste.
-              </p>
+    <ThemeContext.Provider value={darkTheme}>
+      <section className='grid'>
+        <div className='grid__left'>
+          <header>
+            <h1>Toggle theme</h1>
+          </header>
+          <button
+            aria-label={buttonAriaLabel}
+            className='toggle'
+            onClick={toggleTheme}
+          >
+            <div className='toggle__switch-wrapper'>
+              <div className='toggle__switch'></div>
             </div>
-          </div>
-        </section>
-      </ThemeContext.Provider>
-    </>
+          </button>
+        </div>
+        <Component />
+      </section>
+    </ThemeContext.Provider>
   )
 }
