@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { ColorModeContext, ToggleColorModeContext } from '../_Store/ColorMode'
 
 export default function Display() {
-  // consume from provider
+  // consume and destructure from provider
   const [colorModeConsumer, colorModeDataConsumer] = useContext(
     ColorModeContext
   )
@@ -10,10 +10,15 @@ export default function Display() {
   // reach back up to context to change global context's state
   const ToggleColorModeContextStateConsumer = useContext(ToggleColorModeContext)
 
-  // conditionally use certain styles from consumer data
-  const currentStyles = colorModeConsumer
-    ? colorModeDataConsumer.dark
-    : colorModeDataConsumer.light
+  // conditionally use styles from the data in the context provider
+  const printStyles = colorModeConsumer
+    ? colorModeDataConsumer.dark.style
+    : colorModeDataConsumer.light.style
+
+  // conditionally use an aria label from the data in the context provider
+  const printAriaLabel = colorModeConsumer
+    ? colorModeDataConsumer.dark.ariaLabel
+    : colorModeDataConsumer.light.ariaLabel
 
   return (
     <>
@@ -23,7 +28,7 @@ export default function Display() {
             <h1>Toggle theme</h1>
           </header>
           <button
-            // aria-label={buttonAriaLabel}
+            aria-label={printAriaLabel}
             className='toggle'
             onClick={ToggleColorModeContextStateConsumer}
           >
@@ -33,7 +38,7 @@ export default function Display() {
           </button>
         </div>
         <div className='grid__right'>
-          <div style={currentStyles} className='example'>
+          <div style={printStyles} className='example'>
             <h2 className='example__heading'>Example</h2>
             <p className='example__body'>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.

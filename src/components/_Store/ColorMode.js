@@ -9,12 +9,18 @@ export function ColorModeContextProvider({ children }) {
   // settings
   const colorModeContextData = {
     dark: {
-      backgroundColor: '#333',
-      color: '#fff',
+      style: {
+        backgroundColor: '#333',
+        color: '#fff',
+      },
+      ariaLabel: 'Toggle color mode to light',
     },
     light: {
-      backgroundColor: '#eee',
-      color: '#333',
+      style: {
+        backgroundColor: '#eee',
+        color: '#333',
+      },
+      ariaLabel: 'Toggle color mode to dark',
     },
   }
 
